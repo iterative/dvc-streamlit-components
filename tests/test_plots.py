@@ -1,3 +1,5 @@
+import os
+
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -10,7 +12,8 @@ def test_dvc_plots_single(dvc_repo, mocker):
         if args[0] == "Select Revisions":
             return ["Tag: cnn (d34fd8c)"]
         elif args[0] == "Y":
-            return ["output/train_logs.csv: accuracy"]
+            return [
+                f"{os.path.join('output', 'train_logs.csv')}: accuracy"]
 
     mocker.patch("streamlit.multiselect", side_effect=multiselect_side_effect)
 
@@ -31,8 +34,8 @@ def test_dvc_multi_y(dvc_repo, mocker):
             return ["Tag: cnn (d34fd8c)"]
         elif args[0] == "Y":
             return [
-                "output/train_logs.csv: accuracy",
-                "output/train_logs.csv: loss",
+                f"{os.path.join('output', 'train_logs.csv')}: accuracy",
+                f"{os.path.join('output', 'train_logs.csv')}: loss",
             ]
 
     mocker.patch("streamlit.multiselect", side_effect=multiselect_side_effect)
@@ -56,7 +59,7 @@ def test_dvc_multi_rev(dvc_repo, mocker):
                 "Tag: low-lr-experiment (b06a6ba)",
             ]
         elif args[0] == "Y":
-            return ["output/train_logs.csv: accuracy"]
+            return [f"{os.path.join('output', 'train_logs.csv')}: accuracy"]
 
     mocker.patch("streamlit.multiselect", side_effect=multiselect_side_effect)
 
@@ -80,8 +83,8 @@ def test_dvc_multi_y_and_multi_rev(dvc_repo, mocker):
             ]
         elif args[0] == "Y":
             return [
-                "output/train_logs.csv: accuracy",
-                "output/train_logs.csv: loss",
+                f"{os.path.join('output', 'train_logs.csv')}: accuracy",
+                f"{os.path.join('output', 'train_logs.csv')}: loss",
             ]
 
     mocker.patch("streamlit.multiselect", side_effect=multiselect_side_effect)
