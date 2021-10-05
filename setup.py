@@ -35,11 +35,8 @@ class build_py(_build_py):
         self.execute(self.pin_version, ())
         _build_py.run(self)
 
-tests_requires = [
-    "pytest >= 6.0.1",
-    "pytest-mock >= 3.6.1",
-    "pre-commit"
-]
+
+tests_requires = ["pytest >= 6.0.1", "pytest-mock >= 3.6.1", "pre-commit"]
 
 setup(
     name="dvc_streamlit",
@@ -50,10 +47,7 @@ setup(
     description="Streamlit components for DVC.",
     long_description=open("README.md", "r", encoding="UTF-8").read(),
     python_requires=">=3.7",
-    install_requires=[
-        "dvc >= 2.7.4",
-        "streamlit >= 0.89.0"
-    ],
+    install_requires=["dvc >= 2.7.4", "streamlit >= 0.89.0"],
     extras_require={
         "tests": tests_requires,
     },

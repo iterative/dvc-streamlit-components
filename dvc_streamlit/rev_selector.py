@@ -10,8 +10,9 @@ class Rev:
     type: str
     name: str
     sha: str
+
     def __repr__(self) -> str:
-        return f"{self.type}: {self.name} ({self.sha[:7]})" 
+        return f"{self.type}: {self.name} ({self.sha[:7]})"
 
 
 def rev_selector(dvc_repo: Repo) -> Optional[List[Rev]]:
@@ -30,15 +31,12 @@ def rev_selector(dvc_repo: Repo) -> Optional[List[Rev]]:
         for tag in dvc_repo.scm.gitpython.repo.tags
     ]
 
-    # TODO investigate exception raised 
+    # TODO investigate exception raised
     # https://github.com/streamlit/streamlit/blob/develop/lib/streamlit/elements/multiselect.py#L125
     # When passing directly list of dataclasses
-    selected_revs_str = st.multiselect(
-        "Select Revisions", [str(x) for x in revs])
-    
-    rev_str_to_object: Dict[str, Rev] = {
-        str(x): x for x in revs
-    }
+    selected_revs_str = st.multiselect("Select Revisions", [str(x) for x in revs])
+
+    rev_str_to_object: Dict[str, Rev] = {str(x): x for x in revs}
 
     if selected_revs_str:
         return [rev_str_to_object[x] for x in selected_revs_str]
