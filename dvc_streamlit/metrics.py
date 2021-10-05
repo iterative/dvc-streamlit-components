@@ -1,7 +1,6 @@
 from typing import List, Optional
 
 import streamlit as st
-
 from dvc.api import Repo
 from dvc.utils.diff import _diff
 from dvc.utils.flatten import unflatten
@@ -23,13 +22,17 @@ def dvc_metrics(dvc_repo: Repo, selected_revs: Optional[List[Rev]]) -> None:
                 for n, rev in enumerate(selected_revs):
                     with columns[n]:
                         st.write(f"### {rev.type}")
-                        st.write(rev.name)                        
+                        st.write(rev.name)
                         if n == 0:
                             first = metrics[rev.sha]["data"][file_name]["data"]
                             for k, v in sorted(first.items()):
                                 st.metric(k, v)
                         else:
-                            current = metrics[rev.sha]["data"][file_name]["data"]
-                            diff = unflatten(_diff(first, current, with_unchanged=False))
+                            current = metrics[rev.sha]["data"][file_name][
+                                "data"
+                            ]
+                            diff = unflatten(
+                                _diff(first, current, with_unchanged=False)
+                            )
                             for k, v in sorted(diff.items()):
                                 st.metric(k, v["new"], v["diff"])

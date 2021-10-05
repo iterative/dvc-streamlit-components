@@ -22,10 +22,10 @@ def test_dvc_metrics_single(dvc_repo, mocker):
     st_metric.assert_has_calls(
         [
             mocker.call("accuracy", 0.8482999801635742),
-            mocker.call("loss", 0.4460402727127075)
+            mocker.call("loss", 0.4460402727127075),
         ],
-        any_order=True
-    ) 
+        any_order=True,
+    )
 
 
 def test_dvc_metrics_multi(dvc_repo, mocker):
@@ -34,7 +34,7 @@ def test_dvc_metrics_multi(dvc_repo, mocker):
         return_value=[
             "Tag: baseline-nn-experiment (02b68b7)",
             "Tag: cnn (d34fd8c)",
-            "Tag: low-lr-experiment (b06a6ba)"
+            "Tag: low-lr-experiment (b06a6ba)",
         ],
     )
     mocker.patch("streamlit.checkbox", return_value=True)
@@ -50,5 +50,5 @@ def test_dvc_metrics_multi(dvc_repo, mocker):
             mocker.call("accuracy", 0.8928999900817871, 0.04460000991821289),
             mocker.call("accuracy", 0.909500002861023, 0.06120002269744873),
         ],
-        any_order=True
-    ) 
+        any_order=True,
+    )
