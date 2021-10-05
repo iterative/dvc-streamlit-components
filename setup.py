@@ -35,6 +35,10 @@ class build_py(_build_py):
         self.execute(self.pin_version, ())
         _build_py.run(self)
 
+tests_requires = [
+    "pytest>=6.0.1",
+    "pre-commit"
+]
 
 setup(
     name="dvc_streamlit",
@@ -45,7 +49,10 @@ setup(
     description="Streamlit components for DVC.",
     long_description=open("README.md", "r", encoding="UTF-8").read(),
     python_requires=">=3.7",
+    extras_require={
+        "tests": tests_requires,
+    },
     cmdclass={"build_py": build_py},
-    url="https://dvc.org/doc/dvclive",
-    download_url="https://github.com/iterative/dvclive",
+    url="https://github.com/iterative/dvc_streamlit",
+    download_url="https://github.com/iterative/dvc_streamlit",
 )
