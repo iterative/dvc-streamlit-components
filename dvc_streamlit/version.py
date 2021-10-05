@@ -52,7 +52,9 @@ def _is_release(dir_path, base_version):
 
 def _git_revision(dir_path):
     """Get SHA of the HEAD of a Git repository."""
-    return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=dir_path).strip()
+    return subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=dir_path
+    ).strip()
 
 
 def _is_dirty(dir_path):

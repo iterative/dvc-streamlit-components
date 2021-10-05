@@ -1,5 +1,3 @@
-import streamlit as st
-
 from dvc_streamlit.rev_selector import Rev, rev_selector
 
 

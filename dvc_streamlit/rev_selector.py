@@ -34,7 +34,9 @@ def rev_selector(dvc_repo: Repo) -> Optional[List[Rev]]:
     # TODO investigate exception raised
     # https://github.com/streamlit/streamlit/blob/develop/lib/streamlit/elements/multiselect.py#L125
     # When passing directly list of dataclasses
-    selected_revs_str = st.multiselect("Select Revisions", [str(x) for x in revs])
+    selected_revs_str = st.multiselect(
+        "Select Revisions", [str(x) for x in revs]
+    )
 
     rev_str_to_object: Dict[str, Rev] = {str(x): x for x in revs}
 

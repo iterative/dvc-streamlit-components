@@ -8,7 +8,9 @@ from setuptools.command.build_py import build_py as _build_py
 # see https://packaging.python.org/guides/single-sourcing-package-version/
 pkg_dir = os.path.dirname(os.path.abspath(__file__))
 version_path = os.path.join(pkg_dir, "dvc_streamlit", "version.py")
-spec = importlib.util.spec_from_file_location("dvc_streamlit.version", version_path)
+spec = importlib.util.spec_from_file_location(
+    "dvc_streamlit.version", version_path
+)
 dvclive_version = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(dvclive_version)
 version = dvclive_version.__version__
