@@ -49,7 +49,11 @@ setup(
     description="Streamlit components for DVC.",
     long_description=open("README.md", "r", encoding="UTF-8").read(),
     python_requires=">=3.7",
-    install_requires=["dvc >= 2.7.4", "streamlit >= 0.89.0"],
+    install_requires=[
+        "dvc >= 2.7.4",
+        "streamlit >= 0.89.0",
+        "plotly >= 5.3.1",
+    ],
     extras_require={
         "tests": tests_requires,
     },

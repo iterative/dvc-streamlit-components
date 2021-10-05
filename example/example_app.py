@@ -2,14 +2,15 @@ from pathlib import Path
 
 import streamlit as st
 
-from dvc_streamlit import dvc_metrics, dvc_params, dvc_repo, rev_selector
+from dvc_streamlit import (dvc_metrics, dvc_params, dvc_plots, dvc_repo,
+                           rev_selector)
 
 st.set_page_config(layout="wide")
 
 REPO_PATH = Path(__file__).parent / "dvc_repo"
 
 st.sidebar.header("DVC Streamlit")
-component = st.sidebar.radio("Component", ["Metrics", "Params"])
+component = st.sidebar.radio("Component", ["Metrics", "Params", "Plots"])
 
 git_url = st.text_input("Git URL")
 
@@ -21,3 +22,5 @@ if git_url:
         dvc_metrics(dvc_repo, selected_revs)
     elif component == "Params":
         dvc_params(dvc_repo, selected_revs)
+    elif component == "Plots":
+        dvc_plots(dvc_repo, selected_revs)
