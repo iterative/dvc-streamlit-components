@@ -12,8 +12,7 @@ def test_dvc_plots_single(dvc_repo, mocker):
         if args[0] == "Select Revisions":
             return ["Tag: cnn (d34fd8c)"]
         elif args[0] == "Y":
-            return [
-                f"{os.path.join('output', 'train_logs.csv')}: accuracy"]
+            return [f"{os.path.join('output', 'train_logs.csv')}: accuracy"]
 
     mocker.patch("streamlit.multiselect", side_effect=multiselect_side_effect)
 
