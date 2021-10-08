@@ -51,8 +51,9 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "dvc >= 2.7.4",
-        "streamlit >= 0.89.0",
+        "hiplot >= 0.1.29",
         "plotly >= 5.3.1",
+        "streamlit >= 0.89.0",
     ],
     extras_require={
         "tests": tests_requires,
