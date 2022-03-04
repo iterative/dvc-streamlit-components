@@ -1,4 +1,4 @@
-# dvc-streamlit
+# dvc-streamlit-components
 
 Streamlit components for DVC 
 
