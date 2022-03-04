@@ -39,9 +39,8 @@ def dvc_experiments(dvc_repo):
 
     df = pd.DataFrame(experiments)
     df.dropna(
-        how="all", 
-        subset=[x for x in df.columns if x != "uid"],
-        inplace=True)
+        how="all", subset=[x for x in df.columns if x != "uid"], inplace=True
+    )
     df.drop_duplicates(
         subset=[x for x in df.columns if x != "uid"], inplace=True
     )
