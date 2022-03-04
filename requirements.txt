@@ -1,0 +1,4 @@
+dvc>=2.7.4
+hiplot>=0.1.29
+plotly>=5.3.1
+streamlit>=0.89.0
