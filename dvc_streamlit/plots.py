@@ -24,8 +24,13 @@ def dvc_plots(dvc_repo: Repo, selected_revs: Optional[List[Rev]]) -> None:
             for file in plots[rev]["data"]:
                 data = []
                 for row in plots[rev]["data"][file]["data"]:
-                    row["rev"] = rev
-                    data.append(row)
+                    if isinstance(row, str):
+                        rows = plots[rev]["data"][file]["data"][row]
+                    else:
+                        rows = [row]
+                    for row in rows:
+                        row["rev"] = rev
+                    data.extend(rows)
                 plot_files_to_list[file].extend(data)
 
         dfs = {k: pd.DataFrame(v) for k, v in plot_files_to_list.items()}

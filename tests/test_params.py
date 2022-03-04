@@ -8,7 +8,7 @@ def test_dvc_params_single(dvc_repo, mocker):
     mocker.patch(
         "streamlit.multiselect",
         return_value=[
-            "Tag: cnn (d34fd8c)",
+            "Tag: baseline-experiment (53b2d9d)",
         ],
     )
     mocker.patch("streamlit.checkbox", return_value=True)
@@ -22,15 +22,7 @@ def test_dvc_params_single(dvc_repo, mocker):
     st_json.assert_has_calls(
         [
             mocker.call(
-                {
-                    "train": {
-                        "batch_size": 128,
-                        "dropout": 0.4,
-                        "hidden_units": 64,
-                        "lr": 0.01,
-                        "num_epochs": 10,
-                    }
-                }
+                {"train": {"min_split": 2, "n_est": 50, "seed": 20170428}}
             ),
         ]
     )
@@ -40,9 +32,9 @@ def test_dvc_params_multi(dvc_repo, mocker):
     mocker.patch(
         "streamlit.multiselect",
         return_value=[
-            "Tag: cnn (d34fd8c)",
-            "Tag: low-lr-experiment (b06a6ba)",
-            "Branch: main (fc17c19)",
+            "Tag: baseline-experiment (53b2d9d)",
+            "Tag: bigrams-experiment (cc51022)",
+            "Tag: random-forest-experiments (00071e8)",
         ],
     )
     mocker.patch("streamlit.checkbox", return_value=True)
@@ -56,17 +48,9 @@ def test_dvc_params_multi(dvc_repo, mocker):
     st_json.assert_has_calls(
         [
             mocker.call(
-                {
-                    "train": {
-                        "batch_size": 128,
-                        "dropout": 0.4,
-                        "hidden_units": 64,
-                        "lr": 0.01,
-                        "num_epochs": 10,
-                    }
-                }
+                {"train": {"min_split": 2, "n_est": 50, "seed": 20170428}}
             ),
-            mocker.call({"train": {"lr": 0.001}}),
-            mocker.call({"train": {"lr": 0.001}}),
+            mocker.call({}),
+            mocker.call({"train": {"n_est": 100, "min_split": 64}}),
         ]
     )

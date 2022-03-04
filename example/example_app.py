@@ -12,7 +12,7 @@ REPO_PATH = Path(__file__).parent / "dvc_repo"
 st.sidebar.header("DVC Streamlit")
 component = st.sidebar.radio("Component", ["Metrics", "Params", "Plots", "Experiments"])
 
-git_url = st.text_input("Git URL")
+git_url = st.text_input("Git URL", value="https://github.com/iterative/example-get-started")
 
 if git_url:
     dvc_repo = dvc_repo(git_url, REPO_PATH)

@@ -5,9 +5,9 @@ def test_rev_selector(dvc_repo, mocker):
     mocker.patch(
         "streamlit.multiselect",
         return_value=[
-            "Commit: Build and evaluate CNN (d34fd8c)",
-            "Branch: main (fc17c19)",
-            "Tag: neural-net (02b68b7)",
+            "Commit: Run experiments tuning random forest params (00071e8)",
+            "Branch: master (00071e8)",
+            "Tag: baseline-experiment (53b2d9d)",
         ],
     )
 
