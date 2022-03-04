@@ -9,7 +9,7 @@ Or run locally:
 ```
 git clone git@github.com:iterative/dvc-streamlit-components.git
 cd dvc-streamlit-components
-pip install -r requirements.txt
+pip install -e .
 streamlit run example/example_app.py
 ```
 
