@@ -2,7 +2,13 @@
 
 Streamlit components for DVC 
 
-Try online demo https://share.streamlit.io/daavoo/dvc-streamlit-components/main/example/example_app.py
+```
+pip install dvc-streamlit
+```
+
+Try online demo:
+
+https://share.streamlit.io/daavoo/dvc-streamlit-components/main/example/example_app.py
 
 Or run locally:
 
