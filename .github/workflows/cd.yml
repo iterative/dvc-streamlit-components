@@ -5,6 +5,10 @@ on:
 
 jobs:
   deploy:
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -21,6 +25,3 @@ jobs:
         python -m build
     - name: Upload package
       uses: pypa/gh-action-pypi-publish@master
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_TOKEN }}
